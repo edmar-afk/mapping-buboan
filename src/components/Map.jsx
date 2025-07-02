@@ -76,7 +76,7 @@ function Map() {
 
 				{activeCategory &&
 					categoryPins
-						.filter((item) => item.location && item.location.includes(","))
+						.filter((item) => item.location && item.location.includes(",") )
 						.map((item) => {
 							const [latStr, lngStr] = item.location.split(",");
 							const lat = parseFloat(latStr);
