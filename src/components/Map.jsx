@@ -1,4 +1,6 @@
-import { useState } from "react";import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from "react-leaflet";import "leaflet/dist/leaflet.css";
+import { useState } from "react";
+import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import api from "../assets/api";
 import Sidebar from "./Sidebar";
@@ -76,7 +78,7 @@ function Map() {
 
 				{activeCategory &&
 					categoryPins
-						.filter((item) => item.location && item.location.includes(",") )
+						.filter((item) => item.location && item.location.includes(","))
 						.map((item) => {
 							const [latStr, lngStr] = item.location.split(",");
 							const lat = parseFloat(latStr);
@@ -118,6 +120,18 @@ function Map() {
 												Name: {item.people} <br />
 												Age: {item.age} <br />
 												Gender: {item.gender}
+											</>
+										) : activeCategory === "households" ? (
+											<>
+												Family Name: {item.family_name} <br />
+												Members:
+												<ul className="list-disc ml-4">
+													{item.members.map((member, idx) => (
+														<li key={idx}>
+															{member.name} – {member.age} yrs – {member.role}
+														</li>
+													))}
+												</ul>
 											</>
 										) : (
 											"Unknown category"
