@@ -1,4 +1,6 @@
-import { useState } from "react";import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from "react-leaflet";import "leaflet/dist/leaflet.css";import L from "leaflet";
+import { useState } from "react";import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
 import api from "../assets/api";
 import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
@@ -95,7 +97,7 @@ function Map() {
 											e.target.closePopup();
 										},
 									}}>
-									<Popup>
+									<Popup maxWidth={900}>
 										{activeCategory === "pwds" ? (
 											<>
 												Name: {item.people} <br />
@@ -126,15 +128,40 @@ function Map() {
 											</>
 										) : activeCategory === "households" ? (
 											<>
-												Family Name: {item.family_name} <br />
-												Members:
-												<ul className="list-disc ml-4">
-													{item.members.map((member, idx) => (
-														<li key={idx}>
-															{member.name} – {member.age} yrs – {member.role}
-														</li>
-													))}
-												</ul>
+												<table className="table-auto border border-red-300 w-full text-sm">
+													<thead className="bg-red-100 text-red-800">
+														<tr>
+															<th className="border border-red-300 px-4 py-2 text-left">Family Name</th>
+															<th className="border border-red-300 px-4 py-2 text-left">Name</th>
+															<th className="border border-red-300 px-4 py-2 text-left">Age</th>
+															<th className="border border-red-300 px-4 py-2 text-left">Role</th>
+															<th className="border border-red-300 px-4 py-2 text-left">Purok</th>
+															<th className="border border-red-300 px-4 py-2 text-left">Status</th>
+															<th className="border border-red-300 px-4 py-2 text-left">Source of Income</th>
+														</tr>
+													</thead>
+													<tbody>
+														{item.members.map((member, idx) => (
+															<tr
+																key={idx}
+																className="hover:bg-red-50">
+																{idx === 0 ? (
+																	<td
+																		className="border border-red-300 px-4 py-2"
+																		rowSpan={item.members.length}>
+																		{item.family_name}
+																	</td>
+																) : null}
+																<td className="border border-red-300 px-4 py-2">{member.name}</td>
+																<td className="border border-red-300 px-4 py-2">{member.age} yrs</td>
+																<td className="border border-red-300 px-4 py-2">{member.role}</td>
+																<td className="border border-red-300 px-4 py-2">{member.purok}</td>
+																<td className="border border-red-300 px-4 py-2">{member.status}</td>
+																<td className="border border-red-300 px-4 py-2">{member.source_income}</td>
+															</tr>
+														))}
+													</tbody>
+												</table>
 											</>
 										) : (
 											"Unknown category"
