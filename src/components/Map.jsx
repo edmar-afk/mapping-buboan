@@ -1,6 +1,4 @@
-import { useState } from "react";import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+import { useState } from "react";import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from "react-leaflet";import "leaflet/dist/leaflet.css";import L from "leaflet";
 import api from "../assets/api";
 import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
@@ -107,6 +105,8 @@ function Map() {
 												Disability: {item.disable_type}
 												<br />
 												Source of Income: {item.source_income}
+												<br />
+												Purok: {item.purok}
 											</>
 										) : activeCategory === "infras" ? (
 											<>
