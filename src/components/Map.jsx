@@ -1,7 +1,4 @@
-import { useState } from "react";
-import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+import { useState } from "react";import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from "react-leaflet";import "leaflet/dist/leaflet.css";import L from "leaflet";
 import api from "../assets/api";
 import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
@@ -104,6 +101,10 @@ function Map() {
 												Name: {item.people} <br />
 												Age: {item.age} <br />
 												Gender: {item.gender}
+												<br />
+												Disability: {item.disable_type}
+												<br />
+												Source of Income: {item.source_income}
 											</>
 										) : activeCategory === "infras" ? (
 											<>
@@ -120,6 +121,8 @@ function Map() {
 												Name: {item.people} <br />
 												Age: {item.age} <br />
 												Gender: {item.gender}
+												<br />
+												Purok: {item.purok}
 											</>
 										) : activeCategory === "households" ? (
 											<>

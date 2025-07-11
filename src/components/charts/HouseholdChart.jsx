@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";import api from "../../assets/api";
-
+import { useState, useEffect } from "react";
+import api from "../../assets/api";
 function HouseholdChart() {
 	const [data, setData] = useState([]);
-
 	useEffect(() => {
 		const fetchHousehold = async () => {
 			try {
@@ -43,6 +42,21 @@ function HouseholdChart() {
 										<th
 											scope="col"
 											className="px-6 py-3">
+											Source of Income
+										</th>
+										<th
+											scope="col"
+											className="px-6 py-3">
+											Purok
+										</th>
+										<th
+											scope="col"
+											className="px-6 py-3">
+											Status
+										</th>
+										<th
+											scope="col"
+											className="px-6 py-3">
 											Role
 										</th>
 									</tr>
@@ -58,6 +72,9 @@ function HouseholdChart() {
 												{member.name}
 											</th>
 											<td className="px-6 py-4">{member.age}</td>
+											<td className="px-6 py-4">{member.source_income}</td>
+											<td className="px-6 py-4">{member.purok}</td>
+											<td className="px-6 py-4">{member.status}</td>
 											<td className="px-6 py-4">{member.role}</td>
 										</tr>
 									))}

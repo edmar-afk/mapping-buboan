@@ -18,7 +18,7 @@ function Sidebar({ lat, lng, isVisible, categoryKey }) {
 	return (
 		<>
 			<div
-				className={`fixed top-0 z-[9999] w-[500px] h-screen bg-white pt-24 p-4 overflow-y-scroll rounded-xl shadow-lg transition-transform duration-300 ${
+				className={`fixed top-0 z-[9999] w-[400px] h-screen bg-white pt-24 p-4 overflow-y-scroll rounded-xl shadow-lg transition-transform duration-300 ${
 					isVisible ? "translate-x-0 left-0" : "-translate-x-full left-0"
 				}`}>
 				<div className="pt-8 space-y-4">
@@ -36,7 +36,7 @@ function Sidebar({ lat, lng, isVisible, categoryKey }) {
 						<Welcome />
 					)}
 				</div>
-				<div className="sticky bg-white -bottom-4 py-4 flex items-center justify-between mb-4">
+				<div className="sticky bg-white -bottom-4 py-4 flex items-center w-full justify-between mb-4">
 					<div className="flex flex-row items-center gap-2">
 						<p className="w-44 overflow-hidden whitespace-nowrap text-ellipsis">
 							{lat}, {lng}
